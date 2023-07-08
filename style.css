@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --primary-hue: 240;
+  --secondary-hue: 194;
+  --primary-color: hsl(var(--primary-hue), 6%, 21%);
+  --bg-button: hsl(var(--primary-hue), 9%, 89%);
+  --bg-button-selected: hsl(var(--secondary-hue), 97%, 31%);
+  --icon-selected: hsl(0, 0%, 100%);
+}
+
+body {
+  background-color: darkgray;
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  font-family: "Roboto", sans-serif;
+
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2.6rem, 2.6rem + 12vw, 19.2rem);
+}
+
+/* timer and controls */
+
+.timer-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+#timer span {
+  text-align: center;
+  font-size: clamp(8rem, 8rem + 4vw, 12.6rem);
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+#controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#controls button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#controls button svg {
+  width: clamp(2.4rem, 2.4rem + 4vw, 4.8rem);
+}
+
+.play svg path,
+.stop svg path,
+.add-time svg path,
+.sub-time svg path {
+  fill: var(--primary-color);
+}
+
+/* sounds */
+
+.sounds-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 3.2rem;
+}
+
+.sounds-wrapper .sound {
+  padding: clamp(2.4rem, 2.4rem + 4vw, 4.8rem);
+  background-color: var(--bg-button);
+  border-radius: 2.4rem;
+  border: none;
+  cursor: pointer;
+}
+
+.sounds-wrapper .sound:hover {
+  animation: upScale 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.sounds-wrapper .sound.selected {
+  background-color: var(--bg-button-selected);
+}
+
+.sounds-wrapper .sound.selected svg path {
+  fill: var(--icon-selected);
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+}
+
+@keyframes upScale {
+  to {
+    transform: scale(1.1);
+  }
+}
