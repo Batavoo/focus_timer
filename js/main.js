@@ -1,91 +1,46 @@
 import Sounds from "./sounds.js";
 
-const minutesDisplay = document.querySelector(".minutes");
-const secondsDisplay = document.querySelector(".seconds");
+import soundEvents from "./sound-events.js";
 
-const playButtom = document.querySelector(".play");
-const stopButtom = document.querySelector(".stop");
-const addTimeButtom = document.querySelector(".add-time");
-const subTimeButton = document.querySelector(".sub-time");
-
-const forestButtom = document.querySelector("#forest");
-const rainButtom = document.querySelector("#rain");
-const coffeeShopButtom = document.querySelector("#coffee-shop");
-const fireplaceButtom = document.querySelector("#fireplace");
+import {
+  minutesDisplay,
+  secondsDisplay,
+  playButtom,
+  stopButtom,
+  addTimeButtom,
+  subTimeButton,
+  forestButtom,
+  rainButtom,
+  coffeeShopButtom,
+  fireplaceButtom,
+} from "./elements.js";
 
 // Objetos factory
 
 const sounds = Sounds();
 
-// sound Buttons
+const events = soundEvents({ sounds });
 
 forestButtom.addEventListener("click", () => {
-  sounds.forestSound.currentTime = 0;
-  if (forestButtom.classList.contains("selected")) {
-    sounds.forestSound.pause();
-  } else {
-    sounds.forestSound.play();
-  }
-
+  events.songButtonEvent("forestSound", forestButtom);
   forestButtom.classList.toggle("selected");
-  rainButtom.classList.remove("selected");
-  coffeeShopButtom.classList.remove("selected");
-  fireplaceButtom.classList.remove("selected");
-
-  sounds.coffeeShopSound.pause();
-  sounds.fireplaceSound.pause();
-  sounds.rainSound.pause();
+  events.unselectAndRemoveOthers("forestSound", forestButtom);
 });
 
 rainButtom.addEventListener("click", () => {
-  sounds.rainSound.currentTime = 0;
-  if (rainButtom.classList.contains("selected")) {
-    sounds.rainSound.pause();
-  } else {
-    sounds.rainSound.play();
-  }
-
+  events.songButtonEvent("rainSound", rainButtom);
   rainButtom.classList.toggle("selected");
-  forestButtom.classList.remove("selected");
-  coffeeShopButtom.classList.remove("selected");
-  fireplaceButtom.classList.remove("selected");
-
-  sounds.coffeeShopSound.pause();
-  sounds.fireplaceSound.pause();
-  sounds.forestSound.pause();
+  events.unselectAndRemoveOthers("rainSound", rainButtom);
 });
 
 coffeeShopButtom.addEventListener("click", () => {
-  sounds.coffeeShopSound.currentTime = 0;
-  if (coffeeShopButtom.classList.contains("selected")) {
-    sounds.coffeeShopSound.pause();
-  } else {
-    sounds.coffeeShopSound.play();
-  }
-
+  events.songButtonEvent("coffeeShopSound", coffeeShopButtom);
   coffeeShopButtom.classList.toggle("selected");
-  rainButtom.classList.remove("selected");
-  forestButtom.classList.remove("selected");
-  fireplaceButtom.classList.remove("selected");
-
-  sounds.fireplaceSound.pause();
-  sounds.forestSound.pause();
-  sounds.rainSound.pause();
+  events.unselectAndRemoveOthers("coffeeShopSound", coffeeShopButtom);
 });
 
 fireplaceButtom.addEventListener("click", () => {
-  sounds.fireplaceSound.currentTime = 0;
-  if (fireplaceButtom.classList.contains("selected")) {
-    sounds.fireplaceSound.pause();
-  } else {
-    sounds.fireplaceSound.play();
-  }
+  events.songButtonEvent("fireplaceSound", fireplaceButtom);
   fireplaceButtom.classList.toggle("selected");
-  forestButtom.classList.remove("selected");
-  rainButtom.classList.remove("selected");
-  coffeeShopButtom.classList.remove("selected");
-
-  sounds.coffeeShopSound.pause();
-  sounds.forestSound.pause();
-  sounds.rainSound.pause();
+  events.unselectAndRemoveOthers("fireplaceSound", fireplaceButtom);
 });
