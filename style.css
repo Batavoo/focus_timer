@@ -16,7 +16,7 @@
 }
 
 body {
-  background-color: darkgray;
+  background-color: white;
   font-size: 1.6rem;
   color: var(--primary-color);
   font-family: "Roboto", sans-serif;
@@ -98,8 +98,20 @@ main {
   animation-fill-mode: forwards;
 }
 
-.sounds-wrapper .sound.selected {
-  background-color: var(--bg-button-selected);
+.sounds-wrapper #fireplace.sound.selected {
+  background-color: #feb144;
+}
+
+.sounds-wrapper #rain.sound.selected {
+  background-color: #00c2de;
+}
+
+.sounds-wrapper #forest.sound.selected {
+  background-color: #a0d468;
+}
+
+.sounds-wrapper #coffee-shop.sound.selected {
+  background-color: #48cfad;
 }
 
 .sounds-wrapper .sound.selected svg path {

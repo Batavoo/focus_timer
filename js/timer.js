@@ -2,6 +2,7 @@ export default function Timer({ minutesDisplay, secondsDisplay }) {
   let timerTimeOut;
 
   function countdown() {
+    console.log("entrei");
     timerTimeOut = setTimeout(function () {
       let minutes = Number(minutesDisplay.textContent);
       let seconds = Number(secondsDisplay.textContent);

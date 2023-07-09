@@ -23,7 +23,7 @@ const sounds = Sounds();
 
 const events = soundEvents({ sounds });
 
-const timer = Timer(minutesDisplay, secondsDisplay);
+const timer = Timer({ minutesDisplay, secondsDisplay });
 
 forestButtom.addEventListener("click", () => {
   events.songButtonEvent("forestSound", forestButtom);
