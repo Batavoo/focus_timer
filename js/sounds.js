@@ -4,6 +4,11 @@ export default function Sounds() {
   const coffeeShopSound = new Audio("assets/Cafeteria.wav");
   const forestSound = new Audio("assets/Floresta.wav");
 
+  rainSound.loop = true;
+  fireplaceSound.loop = true;
+  coffeeShopSound.loop = true;
+  forestSound.loop = true;
+
   return {
     forestSound,
     rainSound,

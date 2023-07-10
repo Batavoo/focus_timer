@@ -4,6 +4,8 @@ export default function Controls({
   stopButtom,
   addTimeButtom,
   subTimeButton,
+  lightButton,
+  darkButton,
 }) {
   function play_pause() {
     playButtom.classList.toggle("hide");
@@ -12,6 +14,12 @@ export default function Controls({
     addTimeButtom.disabled = true;
     subTimeButton.disabled = true;
     return;
+  }
+
+  function light_dark() {
+    lightButton.classList.toggle("hide");
+    darkButton.classList.toggle("hide");
+    document.body.classList.toggle("dark");
   }
 
   function reset() {
@@ -26,5 +34,6 @@ export default function Controls({
   return {
     play_pause,
     reset,
+    light_dark,
   };
 }

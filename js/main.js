@@ -10,6 +10,7 @@ import {
   minutesDisplay,
   secondsDisplay,
   playButtom,
+  pauseButtom,
   stopButtom,
   addTimeButtom,
   subTimeButton,
@@ -17,7 +18,12 @@ import {
   rainButtom,
   coffeeShopButtom,
   fireplaceButtom,
-  pauseButtom,
+  forestSlider,
+  rainSlider,
+  coffeeSlider,
+  fireplaceSlider,
+  lightButton,
+  darkButton,
 } from "./elements.js";
 
 // Objetos factory
@@ -30,34 +36,52 @@ const controls = Controls({
   stopButtom,
   addTimeButtom,
   subTimeButton,
+  lightButton,
+  darkButton,
 });
 
 const events = soundEvents({ sounds });
 
 const timer = Timer({ minutesDisplay, secondsDisplay });
 
-forestButtom.addEventListener("click", () => {
-  events.songButtonEvent("forestSound", forestButtom);
-  forestButtom.classList.toggle("selected");
-  events.unselectAndRemoveOthers("forestSound", forestButtom);
+forestButtom.addEventListener("click", ({ target }) => {
+  if (target === forestSlider) {
+    events.setVolume("forestSound", target.value / 100);
+  } else {
+    events.songButtonEvent("forestSound", forestButtom);
+    forestButtom.classList.toggle("selected");
+    events.unselectAndRemoveOthers("forestSound", forestButtom);
+  }
 });
 
-rainButtom.addEventListener("click", () => {
-  events.songButtonEvent("rainSound", rainButtom);
-  rainButtom.classList.toggle("selected");
-  events.unselectAndRemoveOthers("rainSound", rainButtom);
+rainButtom.addEventListener("click", ({ target }) => {
+  if (target === rainSlider) {
+    events.setVolume("rainSound", target.value / 100);
+  } else {
+    events.songButtonEvent("rainSound", rainButtom);
+    rainButtom.classList.toggle("selected");
+    events.unselectAndRemoveOthers("rainSound", rainButtom);
+  }
 });
 
-coffeeShopButtom.addEventListener("click", () => {
-  events.songButtonEvent("coffeeShopSound", coffeeShopButtom);
-  coffeeShopButtom.classList.toggle("selected");
-  events.unselectAndRemoveOthers("coffeeShopSound", coffeeShopButtom);
+coffeeShopButtom.addEventListener("click", ({ target }) => {
+  if (target === coffeeSlider) {
+    events.setVolume("coffeeShopSound", target.value / 100);
+  } else {
+    events.songButtonEvent("coffeeShopSound", coffeeShopButtom);
+    coffeeShopButtom.classList.toggle("selected");
+    events.unselectAndRemoveOthers("coffeeShopSound", coffeeShopButtom);
+  }
 });
 
-fireplaceButtom.addEventListener("click", () => {
-  events.songButtonEvent("fireplaceSound", fireplaceButtom);
-  fireplaceButtom.classList.toggle("selected");
-  events.unselectAndRemoveOthers("fireplaceSound", fireplaceButtom);
+fireplaceButtom.addEventListener("click", ({ target }) => {
+  if (target === fireplaceSlider) {
+    events.setVolume("fireplaceSound", target.value / 100);
+  } else {
+    events.songButtonEvent("fireplaceSound", fireplaceButtom);
+    fireplaceButtom.classList.toggle("selected");
+    events.unselectAndRemoveOthers("fireplaceSound", fireplaceButtom);
+  }
 });
 
 playButtom.addEventListener("click", () => {
@@ -81,4 +105,12 @@ addTimeButtom.addEventListener("click", () => {
 
 subTimeButton.addEventListener("click", () => {
   timer.subTime();
+});
+
+darkButton.addEventListener("click", () => {
+  controls.light_dark();
+});
+
+lightButton.addEventListener("click", () => {
+  controls.light_dark();
 });

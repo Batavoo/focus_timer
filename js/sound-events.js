@@ -21,7 +21,6 @@ export default function soundEvents({ sounds }) {
   function unselectAndRemoveOthers(soundName, button) {
     buttons.forEach((element) => {
       if (element !== button) {
-        console.log("entrei");
         element.classList.remove("selected");
       }
     });
@@ -33,8 +32,16 @@ export default function soundEvents({ sounds }) {
     });
   }
 
+  function setVolume(soundName, volume) {
+    const currentAudio = sounds[soundName];
+    console.log(currentAudio);
+    currentAudio.volume = volume;
+    console.log(currentAudio.volume);
+  }
+
   return {
     songButtonEvent,
     unselectAndRemoveOthers,
+    setVolume,
   };
 }
