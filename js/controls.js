@@ -9,6 +9,8 @@ export default function Controls({
     playButtom.classList.toggle("hide");
     pauseButtom.classList.toggle("hide");
     stopButtom.disabled = false;
+    addTimeButtom.disabled = true;
+    subTimeButton.disabled = true;
     return;
   }
 
@@ -16,6 +18,8 @@ export default function Controls({
     playButtom.classList.remove("hide");
     pauseButtom.classList.add("hide");
     stopButtom.disabled = true;
+    addTimeButtom.disabled = false;
+    subTimeButton.disabled = false;
     return;
   }
 

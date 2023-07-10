@@ -10,13 +10,18 @@
   --primary-hue: 240;
   --secondary-hue: 194;
   --primary-color: hsl(var(--primary-hue), 6%, 21%);
+  --color-button-disabled: hsl(240, 5%, 41%);
   --bg-button: hsl(var(--primary-hue), 9%, 89%);
   --bg-button-selected: hsl(var(--secondary-hue), 97%, 31%);
   --icon-selected: hsl(0, 0%, 100%);
+  --bg-button-fire: #feb144;
+  --bg-button-forest: #a0d468;
+  --bg-button-rain: #00c2de;
+  --bg-button-cooffee: #48cfad;
 }
 
 body {
-  background-color: darkolivegreen;
+  background-color: white;
   font-size: 1.6rem;
   color: var(--primary-color);
   font-family: "Roboto", sans-serif;
@@ -69,6 +74,19 @@ main {
   cursor: pointer;
 }
 
+#controls button:hover svg {
+  stroke: var(--bg-button-selected);
+}
+
+#controls button:disabled {
+  cursor: not-allowed;
+}
+
+#controls button:disabled:hover svg {
+  cursor: not-allowed;
+  stroke: var(--color-button-disabled);
+}
+
 #controls button svg {
   stroke: var(--primary-color);
   width: clamp(2.4rem, 2.4rem + 4vw, 4.8rem);
@@ -98,19 +116,19 @@ main {
 }
 
 .sounds-wrapper #fireplace.sound.selected {
-  background-color: #feb144;
+  background-color: var(--bg-button-fire);
 }
 
 .sounds-wrapper #rain.sound.selected {
-  background-color: #00c2de;
+  background-color: var(--bg-button-rain);
 }
 
 .sounds-wrapper #forest.sound.selected {
-  background-color: #a0d468;
+  background-color: var(--bg-button-forest);
 }
 
 .sounds-wrapper #coffee-shop.sound.selected {
-  background-color: #48cfad;
+  background-color: var(--bg-button-cooffee);
 }
 
 .sounds-wrapper .sound.selected svg path {

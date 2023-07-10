@@ -20,8 +20,6 @@ import {
   pauseButtom,
 } from "./elements.js";
 
-let timeSet = 25;
-
 // Objetos factory
 
 const sounds = Sounds();
@@ -36,7 +34,7 @@ const controls = Controls({
 
 const events = soundEvents({ sounds });
 
-const timer = Timer({ minutesDisplay, secondsDisplay, timeSet });
+const timer = Timer({ minutesDisplay, secondsDisplay });
 
 forestButtom.addEventListener("click", () => {
   events.songButtonEvent("forestSound", forestButtom);

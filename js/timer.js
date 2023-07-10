@@ -4,7 +4,6 @@ export default function Timer({ minutesDisplay, secondsDisplay }) {
   let timeSet = 25;
 
   function countdown() {
-    console.log("entrei");
     timerTimeOut = setTimeout(function () {
       let minutes = Number(minutesDisplay.textContent);
       let seconds = Number(secondsDisplay.textContent);
@@ -42,7 +41,6 @@ export default function Timer({ minutesDisplay, secondsDisplay }) {
       Number(minutesDisplay.textContent) + 5
     ).padStart(2, "0");
     timeSet += 5;
-    console.log(timeSet);
   }
 
   function subTime() {
@@ -52,10 +50,8 @@ export default function Timer({ minutesDisplay, secondsDisplay }) {
       ).padStart(2, "0");
       timeSet -= 5;
     } else {
-      timer.updateTimerDisplay(0, 0);
       timeSet = 0;
     }
-    console.log(timeSet);
   }
 
   return {
