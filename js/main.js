@@ -2,6 +2,8 @@ import Sounds from "./sounds.js";
 
 import soundEvents from "./sound-events.js";
 
+import Controls from "./controls.js";
+
 import Timer from "./timer.js";
 
 import {
@@ -15,15 +17,26 @@ import {
   rainButtom,
   coffeeShopButtom,
   fireplaceButtom,
+  pauseButtom,
 } from "./elements.js";
+
+let timeSet = 25;
 
 // Objetos factory
 
 const sounds = Sounds();
 
+const controls = Controls({
+  playButtom,
+  pauseButtom,
+  stopButtom,
+  addTimeButtom,
+  subTimeButton,
+});
+
 const events = soundEvents({ sounds });
 
-const timer = Timer({ minutesDisplay, secondsDisplay });
+const timer = Timer({ minutesDisplay, secondsDisplay, timeSet });
 
 forestButtom.addEventListener("click", () => {
   events.songButtonEvent("forestSound", forestButtom);
@@ -50,25 +63,24 @@ fireplaceButtom.addEventListener("click", () => {
 });
 
 playButtom.addEventListener("click", () => {
+  controls.play_pause();
   timer.countdown();
 });
 
-stopButtom.addEventListener("click", () => {
+pauseButtom.addEventListener("click", () => {
+  controls.play_pause();
   timer.hold();
 });
 
+stopButtom.addEventListener("click", () => {
+  controls.reset();
+  timer.reset();
+});
+
 addTimeButtom.addEventListener("click", () => {
-  minutesDisplay.textContent = String(
-    Number(minutesDisplay.textContent) + 5
-  ).padStart(2, "0");
+  timer.addTime();
 });
 
 subTimeButton.addEventListener("click", () => {
-  if (!(Number(minutesDisplay.textContent) - 5 < 0)) {
-    minutesDisplay.textContent = String(
-      Number(minutesDisplay.textContent) - 5
-    ).padStart(2, "0");
-  } else {
-    timer.updateTimerDisplay(0, 0);
-  }
+  timer.subTime();
 });

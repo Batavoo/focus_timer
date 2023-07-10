@@ -16,7 +16,7 @@
 }
 
 body {
-  background-color: white;
+  background-color: darkolivegreen;
   font-size: 1.6rem;
   color: var(--primary-color);
   font-family: "Roboto", sans-serif;
@@ -32,6 +32,10 @@ main {
   align-items: center;
   justify-content: center;
   gap: clamp(2.6rem, 2.6rem + 12vw, 19.2rem);
+}
+
+.hide {
+  display: none;
 }
 
 /* timer and controls */
@@ -66,14 +70,9 @@ main {
 }
 
 #controls button svg {
+  stroke: var(--primary-color);
   width: clamp(2.4rem, 2.4rem + 4vw, 4.8rem);
-}
-
-.play svg path,
-.stop svg path,
-.add-time svg path,
-.sub-time svg path {
-  fill: var(--primary-color);
+  height: clamp(2.4rem, 2.4rem + 4vw, 4.8rem);
 }
 
 /* sounds */

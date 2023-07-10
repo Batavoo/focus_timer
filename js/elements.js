@@ -2,6 +2,7 @@ const minutesDisplay = document.querySelector(".minutes");
 const secondsDisplay = document.querySelector(".seconds");
 
 const playButtom = document.querySelector(".play");
+const pauseButtom = document.querySelector(".pause");
 const stopButtom = document.querySelector(".stop");
 const addTimeButtom = document.querySelector(".add-time");
 const subTimeButton = document.querySelector(".sub-time");
@@ -15,6 +16,7 @@ export {
   minutesDisplay,
   secondsDisplay,
   playButtom,
+  pauseButtom,
   stopButtom,
   addTimeButtom,
   subTimeButton,
